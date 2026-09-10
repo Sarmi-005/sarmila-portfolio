@@ -184,7 +184,7 @@ if (
         text: `
 Name: ${name}
 Email: ${email}
-
+Subject: ${subject || "No subject"}
 Message:
 ${message}
         `
