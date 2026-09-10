@@ -143,11 +143,19 @@ app.post("/api/contact", async (req, res) => {
     saveMessage(newMessage);
 
     // Optional email notification
-    if (
-      process.env.SMTP_HOST &&
-      process.env.SMTP_USER &&
-      process.env.SMTP_PASS
-    ) {
+   // Email notification
+console.log("SMTP configured:", {
+  host: !!process.env.SMTP_HOST,
+  user: !!process.env.SMTP_USER,
+  pass: !!process.env.SMTP_PASS,
+  email: !!process.env.CONTACT_EMAIL
+});
+
+if (
+  process.env.SMTP_HOST &&
+  process.env.SMTP_USER &&
+  process.env.SMTP_PASS
+) {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT || 587),
